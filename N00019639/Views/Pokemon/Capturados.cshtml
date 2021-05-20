@@ -1,0 +1,14 @@
+﻿@foreach (var pokemon in Model)
+{
+    <h1>@pokemon.Pokemon.Id - @pokemon.Pokemon.Nombre</h1>
+    <img src="@pokemon.Pokemon.RutaImagen" height="100" width="100" />
+    <h4>@pokemon.Pokemon.Tipo.Nombre</h4>
+    <h3>@pokemon.Fecha</h3>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form action="/Pokemon/Liberar?PokemonId=@pokemon.Pokemon.Id" method="post">
+                <button>Liberar</button>
+            </form>
+        }
+    <hr />
+}

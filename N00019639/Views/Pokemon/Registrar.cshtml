@@ -1,0 +1,25 @@
+﻿@if (TempData["ErrorValidacion"] != null)
+{
+    <span style="color: red">Error: @TempData["ErrorValidacion"]</span>
+}
+
+<form action="/Pokemon/Registrar" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Nombre</label>
+        <input type="text" name="Nombre"/>
+    </div>
+    <div>
+        <label>Tipo</label>
+        <select name="TipoId">
+            @foreach (var tipo in Model)
+            {
+        <option value="@tipo.Id">@tipo.Nombre</option>
+        }
+        </select>
+    </div>
+    <div>
+        <label>Imagen</label>
+        <input type="file" name="image" value="" />
+    </div>
+    <input type="submit" class="btn btn-primary" value="Registrar">
+</form>

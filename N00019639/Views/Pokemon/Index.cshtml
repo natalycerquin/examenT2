@@ -1,0 +1,18 @@
+﻿<button>
+    <a href="/Pokemon/Registrar"><strong>Registrar pokemon</strong></a>
+</button>
+
+@foreach (var pokemon in Model)
+{
+
+    <h1>ID: @pokemon.Id - @pokemon.Nombre</h1>
+    <img src="@pokemon.RutaImagen" height="100" width="100" />
+    <h4>@pokemon.Tipo.Nombre</h4>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form action="/Pokemon/Capturar?PokemonId=@pokemon.Id" method="post">
+            <button>Capturar</button>
+        </form>
+    }
+    <hr />
+}
